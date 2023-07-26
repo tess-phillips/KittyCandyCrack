@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let has_ball = false;
     let interval;
     let passCounter = 0; // Counter for passes
+    let eventStart; // Timestamp for event start
+    let eventEnd; // Timestamp for event end
   
     function moveBall(targetKitty) {
       if (ballPositionX === targetKitty.offsetLeft + targetKitty.offsetWidth / 2 - ball.offsetWidth / 2) {
@@ -15,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         interval = null;
         passCounter++; // Increment pass counter when a pass is complete
         console.log("Passes:", passCounter);
+        console.log("Time taken:", eventEnd - eventStart, "milliseconds");
       } else {
         ballPositionX += ballPositionX < targetKitty.offsetLeft + targetKitty.offsetWidth / 2 - ball.offsetWidth / 2 ? 1 : -1;
         ball.style.left = ballPositionX + "px";
@@ -36,15 +39,34 @@ document.addEventListener("DOMContentLoaded", () => {
   
       const targetKitty = kitty_released === "kitty1" ? kitty2 : kitty1;
       interval = setInterval(() => moveBall(targetKitty), 10); // Move the ball towards the other kitty
+      eventEnd = Date.now(); // Record the event end time
     }
   
     // For mouse events
-    kitty1.addEventListener("mouseup", () => onKittyRelease(kitty1));
-    kitty2.addEventListener("mouseup", () => onKittyRelease(kitty2));
+    kitty1.addEventListener("mousedown", (event) => {
+      eventStart = Date.now(); // Record the event start time
+    });
+  
+    kitty2.addEventListener("mousedown", (event) => {
+      eventStart = Date.now(); // Record the event start time
+    });
+  
+    document.addEventListener("mouseup", () => {
+      onKittyRelease(event.target);
+    });
   
     // For touch events
-    kitty1.addEventListener("touchend", () => onKittyRelease(kitty1));
-    kitty2.addEventListener("touchend", () => onKittyRelease(kitty2));
+    kitty1.addEventListener("touchstart", (event) => {
+      eventStart = Date.now(); // Record the event start time
+    });
+  
+    kitty2.addEventListener("touchstart", (event) => {
+      eventStart = Date.now(); // Record the event start time
+    });
+  
+    document.addEventListener("touchend", (event) => {
+      onKittyRelease(event.target);
+    });
   
     // Prevent default behavior on touch events to avoid potential conflicts
     document.body.addEventListener("touchstart", (event) => {
