@@ -1,20 +1,19 @@
 // script.js
 document.addEventListener("DOMContentLoaded", () => {
-    const gameContainer = document.getElementById("game-container");
     const kitty1 = document.getElementById("kitty1");
     const kitty2 = document.getElementById("kitty2");
     const ball = document.getElementById("ball");
   
-    // Set the initial position of the ball on top of "kitty1"
     let ballPositionX = kitty1.offsetLeft + kitty1.offsetWidth / 2 - ball.offsetWidth / 2;
     let has_ball = false;
     let interval;
   
-    function moveBall() {
-      if (ballPositionX >= kitty2.offsetLeft - ball.offsetWidth) {
+    function moveBall(targetKitty) {
+      if (ballPositionX === targetKitty.offsetLeft + targetKitty.offsetWidth / 2 - ball.offsetWidth / 2) {
         clearInterval(interval);
+        interval = null;
       } else {
-        ballPositionX += 1;
+        ballPositionX += ballPositionX < targetKitty.offsetLeft + targetKitty.offsetWidth / 2 - ball.offsetWidth / 2 ? 1 : -1;
         ball.style.left = ballPositionX + "px";
       }
     }
@@ -32,7 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return; // Do nothing if the clicked kitty doesn't have the ball
       }
   
-      interval = setInterval(moveBall, 10); // Move the ball if the clicked kitty has the ball
+      const targetKitty = kitty_clicked === "kitty1" ? kitty2 : kitty1;
+      interval = setInterval(() => moveBall(targetKitty), 10); // Move the ball towards the other kitty
     }
   
     kitty1.addEventListener("click", () => onKittyClick(kitty1));
