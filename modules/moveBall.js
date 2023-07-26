@@ -1,6 +1,7 @@
 function moveBall(gameState, ball, targetKitty) {
-  const speed = 2; // Number of pixels the ball moves on each update
-  const amplitude = 10; // Amplitude of the sine wave
+  const speed = 1; // Number of pixels the ball moves on each update
+  // below simulates the random path
+  const amplitude = Math.floor(Math.random() * 3);; // Amplitude of the sine wave
   const frequency = 0.02; // Frequency of the sine wave
   const verticalSpeed = 1; // Speed of vertical movement
 
@@ -11,6 +12,8 @@ function moveBall(gameState, ball, targetKitty) {
   const endY = targetKitty.offsetTop + targetKitty.offsetHeight / 2 - ball.offsetHeight / 2;
 
   if (gameState.ballPositionX === endX) {
+    const xOffsetEND = amplitude * Math.sin(frequency * gameState.ballPositionX);
+    console.log(xOffsetEND)
     clearInterval(gameState.interval);
     gameState.interval = null;
     gameState.passCounter++; // Increment pass counter when a pass is complete
