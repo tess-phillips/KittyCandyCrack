@@ -1,0 +1,34 @@
+/* styles.css */
+#game-container {
+    position: relative;
+    width: 600px; /* Set the width of the game-canvas container */
+    height: 400px; /* Set the height of the game-canvas container */
+    overflow: hidden; /* Ensure anything outside the container is hidden */
+  }
+  
+  .kitty {
+    width: 50px;
+    height: 50px;
+    position: absolute; /* Keep the kitties absolutely positioned */
+    top: 50%;
+  }
+  
+  #kitty1 {
+    left: 0;
+    background-color: red;
+  }
+  
+  #kitty2 {
+    right: 0;
+    background-color: green;
+  }
+  
+  .ball {
+    width: 30px;
+    height: 30px;
+    position: absolute; /* Keep the ball absolutely positioned */
+    top: 50%;
+    background-color: yellow;
+    border-radius: 50%;
+  }
+  
