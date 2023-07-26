@@ -11,9 +11,8 @@ function moveBall(gameState, ball, targetKitty) {
   const endX = targetKitty.offsetLeft + targetKitty.offsetWidth / 2 - ball.offsetWidth / 2;
   const endY = targetKitty.offsetTop + targetKitty.offsetHeight / 2 - ball.offsetHeight / 2;
 
-  if (gameState.ballPositionX === endX) {
-    const xOffsetEND = amplitude * Math.sin(frequency * gameState.ballPositionX);
-    console.log(xOffsetEND)
+  if (gameState.ballPositionX == endX) {
+    // if (Math.abs(gameState.ballPositionX - endX) < 0.5) {
     clearInterval(gameState.interval);
     gameState.interval = null;
     gameState.passCounter++; // Increment pass counter when a pass is complete

@@ -32,8 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
       gameState.eventStart = Date.now(); // Record the event start time
     });
   
-    document.addEventListener("mouseup", () => {
+    document.addEventListener("mouseup", (event) => {
       console.log("Mouse up");
+      event.stopPropagation();
       onKittyRelease(gameState, event.target);
     });
   
@@ -50,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     document.addEventListener("touchend", (event) => {
       console.log("Touch end");
+      event.stopPropagation();
       onKittyRelease(gameState, event.target);
     });
   
