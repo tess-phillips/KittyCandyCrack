@@ -19,7 +19,7 @@ function onKittyRelease(gameState, releasedKitty) {
     gameState.speed_ = 1/gameState.timePressed
     console.log(gameState.speed_)
     
-    gameState.interval = setInterval(() => moveBall(gameState, targetKitty), gameState.speed_ *1000); // Move the ball towards the other kitty
+    gameState.interval = setInterval(() => moveBall(gameState, ball, targetKitty), gameState.speed_ *1000); // Move the ball towards the other kitty
 
 }
 

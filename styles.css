@@ -47,8 +47,9 @@ body, html {
     width: 30px;
     height: 30px;
     position: absolute;
-    top: 50%;
-    left: 0; /* Start the ball on top of "kitty1" */
+    top: 52%;
+    left: 9px; 
+    /* Start the ball on top of "kitty1" */
     background-color: yellow;
     border-radius: 50%;
   }
