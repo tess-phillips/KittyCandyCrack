@@ -13,12 +13,6 @@ function setupEventListeners(gameState, kitty1, kitty2, ball) {
       gameState.eventStart = Date.now(); // Record the event start time
     });
   
-    document.addEventListener("mouseup", (event) => {
-      console.log("Mouse up");
-      event.stopPropagation();
-      onKittyRelease(gameState, ball, event.target);
-    });
-  
     // For touch events
     kitty1.addEventListener("touchstart", () => {
       console.log("Touch start");
@@ -30,17 +24,25 @@ function setupEventListeners(gameState, kitty1, kitty2, ball) {
       gameState.eventStart = Date.now(); // Record the event start time
     });
   
-    document.addEventListener("touchend", (event) => {
-      console.log("Touch end");
-      event.stopPropagation();
-      onKittyRelease(gameState, ball, event.target);
-    });
-  
     // Prevent default behavior on touch events to avoid potential conflicts
     document.body.addEventListener("touchstart", (event) => {
       if (event.target === kitty1 || event.target === kitty2) {
         event.preventDefault();
       }
+    });
+
+
+    //relevant listeners to onKittyRelease
+    document.addEventListener("touchend", (event) => {
+      console.log("Touch end");
+      event.stopPropagation();
+      onKittyRelease(gameState, ball, event.target);
+    });
+
+    document.addEventListener("mouseup", (event) => {
+      console.log("Mouse up");
+      event.stopPropagation();
+      onKittyRelease(gameState, ball, event.target);
     });
 }
   

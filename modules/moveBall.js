@@ -1,3 +1,5 @@
+// moveBall.js
+
 function moveBall(gameState, ball, targetKitty) {
   const speed = 2; // Number of pixels the ball moves on each update
   // below simulates the random path

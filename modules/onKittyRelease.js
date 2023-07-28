@@ -1,3 +1,4 @@
+// onKittyRelease.js
 import {moveBall} from "./moveBall.js"
 
 function onKittyRelease(gameState, ball, releasedKitty) {
@@ -18,7 +19,7 @@ function onKittyRelease(gameState, ball, releasedKitty) {
     gameState.timePressed = gameState.eventEnd - gameState.eventStart
     if (gameState.timePressed > 2000){ //hold for long so speed is fast
       gameState.speed_ = 2
-    } else if (gameState.timePressed < 2000 && gameState.timePressed > 500) {//hold not long so speed slow
+    } else if (gameState.timePressed >= 500 && gameState.timePressed < 2000) {//hold not long so speed slow
       gameState.speed_ = 5
     } else { // slow version (just a click)
       gameState.speed_ = 15

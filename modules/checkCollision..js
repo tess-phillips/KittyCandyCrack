@@ -1,13 +1,13 @@
-function checkCollision(ball, spot) {
+function checkCollision(ball, crack) {
     const ballRect = ball.getBoundingClientRect();
-    const spotRect = spot.getBoundingClientRect();
+    const crackRect = crack.getBoundingClientRect();
   
-    // Check for collision between the ball and the spot
+    // Check for collision between the ball and the crack
     if (
-      ballRect.left < spotRect.right &&
-      ballRect.right > spotRect.left &&
-      ballRect.top < spotRect.bottom &&
-      ballRect.bottom > spotRect.top
+      ballRect.left < crackRect.right &&
+      ballRect.right > crackRect.left &&
+      ballRect.top < crackRect.bottom &&
+      ballRect.bottom > crackRect.top
     ) {
       // Collision detected
       return true;
