@@ -1,18 +1,20 @@
 // eventListeners.js
-import { onKittyRelease } from "./onKittyRelease.js"
+import { kittyCanRelease } from "./kittyCanRelease.js"
+import { moveBall } from "./moveBall.js";
+import { ballSpeed } from "./ballSpeed.js";
 
-function isCollision(ball, crack) {
-  const ballRect = ball.getBoundingClientRect();
-  const crackRect = crack.getBoundingClientRect();
+// function isCollision(ball, crack) {
+//   const ballRect = ball.getBoundingClientRect();
+//   const crackRect = crack.getBoundingClientRect();
 
-  // Check for collision
-  return (
-    ballRect.left < crackRect.right &&
-    ballRect.right > crackRect.left &&
-    ballRect.top < crackRect.bottom &&
-    ballRect.bottom > crackRect.top
-  );
-}
+//   // Check for collision
+//   return (
+//     ballRect.left < crackRect.right &&
+//     ballRect.right > crackRect.left &&
+//     ballRect.top < crackRect.bottom &&
+//     ballRect.bottom > crackRect.top
+//   );
+// }
 
 function setupEventListeners(gameState, kitty1, kitty2, ball) {
   // For mouse events
@@ -45,33 +47,43 @@ function setupEventListeners(gameState, kitty1, kitty2, ball) {
   });
 
 
-  //relevant listeners to onKittyRelease
+  //relevant listeners to kittyCanRelease
   document.addEventListener("touchend", (event) => {
     console.log("Touch end");
     event.stopPropagation();
-    onKittyRelease(gameState, ball, event.target);
+    if (kittyCanRelease(gameState, ball, event.target)){ 
+      gameState.speed_ = ballSpeed(gameState)
+      // Move the ball towards the other kitty
+      gameState.interval = setInterval(() => moveBall(gameState, ball, event.target), gameState.speed_ ); 
+    }
   });
 
   document.addEventListener("mouseup", (event) => {
     console.log("Mouse up");
     event.stopPropagation();
-    onKittyRelease(gameState, ball, event.target);
+    if (kittyCanRelease(gameState, ball, event.target)){ 
+      gameState.speed_ = ballSpeed(gameState)
+      // Move the ball towards the other kitty
+      gameState.interval = setInterval(() => moveBall(gameState, ball, event.target), gameState.speed_ ); 
+    } 
   });
+
 }
 
-function setupCollisionDetection(gameState, ball, crack) {
-  ball.addEventListener("animationiteration", () => {
-    if (isCollision(ball, crack)) {
-      // Handle collision here
-      console.log("Collision detected!");
-      // You can take appropriate actions when a collision is detected
-      // For example, stopping the game or updating the score.
-    } else {
-      // No collision
-      console.log("No collision.");
-    }
-  });
-}
+// function setupCollisionDetection(gameState, ball, crack) {
+//   ball.addEventListener("animationiteration", () => {
+//     if (isCollision(ball, crack)) {
+//       // Handle collision here
+//       console.log("Collision detected!");
+//       // You can take appropriate actions when a collision is detected
+//       // For example, stopping the game or updating the score.
+//     } else {
+//       // No collision
+//       console.log("No collision.");
+//     }
+//   });
+// }
   
-export { setupEventListeners, setupCollisionDetection };
+export { setupEventListeners };
+// export { setupCollisionDetection };
   
