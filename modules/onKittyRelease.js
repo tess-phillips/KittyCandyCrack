@@ -25,6 +25,7 @@ function onKittyRelease(gameState, ball, releasedKitty) {
       gameState.speed_ = 15
     }
 
+    // change this function so instead of callinf moveBall it returns true or false and moveBall is called inside the listener
     console.log(gameState.speed_)
     gameState.interval = setInterval(() => moveBall(gameState, ball, targetKitty), gameState.speed_ ); // Move the ball towards the other kitty
 
