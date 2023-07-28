@@ -1,7 +1,7 @@
 // kittyCanRelease.js
 
 function kittyCanRelease(gameState, releasedKitty) {
-  const kittyCanReleaseBool = true
+  var kittyCanReleaseBool = true
   const kitty_released = releasedKitty.id;
 
   if (kitty_released !== "kitty1" && kitty_released !== "kitty2") {
