@@ -1,5 +1,4 @@
 // script.js
-// import { setupCollisionDetection } from "./modules/eventListeners.js";
 import { setupEventListeners } from "./modules/eventListeners.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -20,8 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Call the setupEventListeners function to set up all the event listeners
-  setupEventListeners(gameState, kitty1, kitty2, ball);
+  setupEventListeners(gameState, kitty1, kitty2, ball, crack);
 
-  // // Call the setupCollisionDetection function to set up the collision detection event listener
-  // setupCollisionDetection(gameState, ball, crack);
 });

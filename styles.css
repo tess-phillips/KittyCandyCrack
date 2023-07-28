@@ -52,6 +52,8 @@ body, html {
   /* Start the ball on top of "kitty1" */
   background-color: yellow;
   border-radius: 50%;
+  /* mix-blend-mode: difference; */
+  pointer-events: none;
 }
 
 .crack {

@@ -1,7 +1,6 @@
 // kittyCanRelease.js
-import {moveBall} from "./moveBall.js"
 
-function kittyCanRelease(gameState, ball, releasedKitty) {
+function kittyCanRelease(gameState, releasedKitty) {
   const kittyCanReleaseBool = true
   const kitty_released = releasedKitty.id;
 

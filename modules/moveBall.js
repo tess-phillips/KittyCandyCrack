@@ -1,16 +1,8 @@
 // moveBall.js
 
-// if (kittyCanRelease(gameState, ball, event.target)){
-//   moveBall(gameState, ball, event.target)
-// }
-
-
 function moveBall(gameState, ball, releasedKitty) {
   const kitty_released = releasedKitty.id
   const targetKitty = kitty_released === "kitty1" ? kitty2 : kitty1;
-
-
-
 
   const speed = 2; // Number of pixels the ball moves on each update
   // below simulates the random path
@@ -29,7 +21,7 @@ function moveBall(gameState, ball, releasedKitty) {
     clearInterval(gameState.interval);
     gameState.interval = null;
     gameState.passCounter++; // Increment pass counter when a pass is complete
-    console.log("Passes:", gameState.passCounter);
+    // console.log("Passes:", gameState.passCounter);
     console.log("Time taken:", gameState.eventEnd - gameState.eventStart, "milliseconds");
   } else {
     gameState.ballPositionX += gameState.ballPositionX < endX ? speed : -speed;
