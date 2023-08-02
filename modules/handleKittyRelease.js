@@ -9,8 +9,9 @@ function handleKittyRelease(event) {
     // console.log(kittyCanRelease(event.target))
     if (kittyCanRelease(event.target)) {
       gameState.speed_ = ballSpeed();
+      const amplitude = Math.floor(Math.random() * 3);; // Amplitude of the sine wave
       // Move the ball towards the other kitty
-      gameState.interval = setInterval(() => moveBall(event.target), gameState.speed_);
+      gameState.interval = setInterval(() => moveBall(event.target, amplitude), gameState.speed_);
     }
 }
 
