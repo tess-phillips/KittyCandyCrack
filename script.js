@@ -20,6 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // };
 
   // Call the setupEventListeners function to set up all the event listeners
-  setupEventListeners(gameState, kitty1, kitty2, ball, crack);
+  setupEventListeners(kitty1, kitty2, ball, crack);
 
 });

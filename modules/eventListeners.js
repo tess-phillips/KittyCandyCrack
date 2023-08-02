@@ -1,7 +1,4 @@
 // eventListeners.js
-import { kittyCanRelease } from "./kittyCanRelease.js"
-import { moveBall } from "./moveBall.js";
-import { ballSpeed } from "./ballSpeed.js";
 import { handleMouseDownOrTouchStart } from "./handleMouseDownOrTouchStart.js";
 import { handleKittyRelease } from "./handleKittyRelease.js";
 
@@ -25,7 +22,7 @@ function isCollision(ball, crack) {
 }
 
 
-function setupEventListeners(gameState, kitty1, kitty2, ball, crack) {
+function setupEventListeners(kitty1, kitty2, ball, crack) {
 
   
   kitty1.addEventListener("mousedown", handleMouseDownOrTouchStart);

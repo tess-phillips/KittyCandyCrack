@@ -1,6 +1,7 @@
 // moveBall.js
+import { gameState } from "../gameState.js";
 
-function moveBall(gameState, ball, releasedKitty) {
+function moveBall(ball, releasedKitty) {
   const kitty_released = releasedKitty.id
   const targetKitty = kitty_released === "kitty1" ? kitty2 : kitty1;
 
