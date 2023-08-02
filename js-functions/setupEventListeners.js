@@ -23,7 +23,7 @@ function setupEventListeners() {
   document.addEventListener("mouseup", handleKittyRelease);  
 
 
-  // const collisionResult = isCollision(ball, crack);
+  // const collisionResult = isTouching(ball, crack);
   // console.log('Collision Result:', collisionResult);
 
 
