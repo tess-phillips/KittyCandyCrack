@@ -1,7 +1,8 @@
 // kittyCanRelease.js
+import { gameState } from "../gameState.js";
 
-function kittyCanRelease(gameState, releasedKitty) {
-  const kittyCanReleaseBool = true
+function kittyCanRelease(releasedKitty) {
+  var kittyCanReleaseBool = true
   const kitty_released = releasedKitty.id;
 
   if (kitty_released !== "kitty1" && kitty_released !== "kitty2") {

@@ -1,6 +1,7 @@
 // ballSpeed.js
+import { gameState } from "../gameState.js";
 
-function ballSpeed(gameState){
+function ballSpeed(){
     gameState.eventEnd = Date.now(); // Record the event end time
     gameState.timePressed = gameState.eventEnd - gameState.eventStart
 
@@ -12,7 +13,7 @@ function ballSpeed(gameState){
     gameState.speed_ = 15
     }
 
-    console.log(gameState.speed_)
+    console.log(gameState.speed_, "speed (bigger is slower)")
     return gameState.speed_
 }
 
