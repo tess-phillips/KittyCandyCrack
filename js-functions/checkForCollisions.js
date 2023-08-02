@@ -18,7 +18,7 @@ function checkForCollisions() {
     setTimeout(() => {
       ball.style.display = "block";
       animateBallDrop(); // Call animateBallDrop to make the ball drop again
-      console.log("ball dropped")
+      console.log("ball dropped - kittyCanRelease not releasing?")
     }, 1000);
   } 
   else if (isTouching()) {
