@@ -2,6 +2,8 @@
 import { kittyCanRelease } from "./kittyCanRelease.js"
 import { moveBall } from "./moveBall.js";
 import { ballSpeed } from "./ballSpeed.js";
+import { handleMouseDownOrTouchStart } from "./handleMouseDownOrTouchStart.js";
+import { handleKittyRelease } from "./handleKittyRelease.js";
 
 function isCollision(ball, crack) {
   const ballRect = ball.getBoundingClientRect();
@@ -24,10 +26,7 @@ function isCollision(ball, crack) {
 
 
 function setupEventListeners(gameState, kitty1, kitty2, ball, crack) {
-  function handleMouseDownOrTouchStart() {
-    // console.log("Mouse down / Touch start");
-    gameState.eventStart = Date.now(); // Record the event start time
-  }
+
   
   kitty1.addEventListener("mousedown", handleMouseDownOrTouchStart);
   kitty2.addEventListener("mousedown", handleMouseDownOrTouchStart);
@@ -40,24 +39,13 @@ function setupEventListeners(gameState, kitty1, kitty2, ball, crack) {
       event.preventDefault();
     }
   });
-
-  function handleKittyRelease(event) {
-    // console.log(event.type);
-    event.stopPropagation();
-    console.log(kittyCanRelease(gameState, event.target))
-    if (kittyCanRelease(gameState, event.target)) {
-      gameState.speed_ = ballSpeed(gameState);
-      // Move the ball towards the other kitty
-      gameState.interval = setInterval(() => moveBall(gameState, ball, event.target), gameState.speed_);
-    }
-  }
   
   document.addEventListener("touchend", handleKittyRelease);
   document.addEventListener("mouseup", handleKittyRelease);  
 
 
-  const collisionResult = isCollision(ball, crack);
-  console.log('Collision Result:', collisionResult);
+  // const collisionResult = isCollision(ball, crack);
+  // console.log('Collision Result:', collisionResult);
 
   function checkForCollisions() {
     if (isCollision(ball, crack)) {
