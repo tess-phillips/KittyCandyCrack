@@ -11,10 +11,7 @@ function checkForCollisions() {
     gameState.interval = null;
     ball.style.display = "none"
     ball.style.left = "9px"
-    // ball.remove()
-    // ball = document.createElement("div");
-    // ball.id = "ball";
-    // ball.className = "ball";
+// KITTY RELEASE NOT WORKING AFTER BALL FALLS IN CRACK
     setTimeout(() => {
       ball.style.display = "block";
       animateBallDrop(); // Call animateBallDrop to make the ball drop again
