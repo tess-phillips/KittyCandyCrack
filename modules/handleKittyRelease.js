@@ -10,7 +10,7 @@ function handleKittyRelease(event) {
     if (kittyCanRelease(event.target)) {
       gameState.speed_ = ballSpeed();
       // Move the ball towards the other kitty
-      gameState.interval = setInterval(() => moveBall(ball, event.target), gameState.speed_);
+      gameState.interval = setInterval(() => moveBall(event.target), gameState.speed_);
     }
 }
 

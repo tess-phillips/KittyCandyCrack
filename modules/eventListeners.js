@@ -1,28 +1,30 @@
 // eventListeners.js
 import { handleMouseDownOrTouchStart } from "./handleMouseDownOrTouchStart.js";
 import { handleKittyRelease } from "./handleKittyRelease.js";
+import { kitty1, kitty2} from "../gameObjects.js"
+import { isCollision } from "./isCollision.js";
 
-function isCollision(ball, crack) {
-  const ballRect = ball.getBoundingClientRect();
-  const crackRect = crack.getBoundingClientRect();
+// function isCollision(ball, crack) {
+//   const ballRect = ball.getBoundingClientRect();
+//   const crackRect = crack.getBoundingClientRect();
 
-  // Check for collision
-  const collision =
-    ballRect.left < crackRect.right &&
-    ballRect.right > crackRect.left &&
-    ballRect.top < crackRect.bottom &&
-    ballRect.bottom > crackRect.top;
+//   // Check for collision
+//   const collision =
+//     ballRect.left < crackRect.right &&
+//     ballRect.right > crackRect.left &&
+//     ballRect.top < crackRect.bottom &&
+//     ballRect.bottom > crackRect.top;
 
-  // Output the bounding rectangles and collision result to the console
-  // console.log('Ball Rect:', ballRect);
-  // console.log('Crack Rect:', crackRect);
-  // console.log('Collision:', collision);
+//   // Output the bounding rectangles and collision result to the console
+//   // console.log('Ball Rect:', ballRect);
+//   // console.log('Crack Rect:', crackRect);
+//   // console.log('Collision:', collision);
 
-  return collision;
-}
+//   return collision;
+// }
 
 
-function setupEventListeners(kitty1, kitty2, ball, crack) {
+function setupEventListeners() {
 
   
   kitty1.addEventListener("mousedown", handleMouseDownOrTouchStart);
@@ -45,7 +47,7 @@ function setupEventListeners(kitty1, kitty2, ball, crack) {
   // console.log('Collision Result:', collisionResult);
 
   function checkForCollisions() {
-    if (isCollision(ball, crack)) {
+    if (isCollision()) {
       // Handle collision here
       console.log("Collision detected!");
       // You can take appropriate actions when a collision is detected
