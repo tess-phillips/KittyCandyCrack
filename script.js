@@ -1,5 +1,5 @@
 // script.js
-import { setupEventListeners } from "./modules/setupEventListeners.js";
+import { setupEventListeners } from "./js-functions/setupEventListeners.js";
 // import { kitty1, kitty2, ball, crack} from "./gameObjects.js"
 
 document.addEventListener("DOMContentLoaded", () => {
