@@ -1,5 +1,5 @@
 // kittyCanRelease.js
-import { gameState } from "../gameState.js";
+import { gameState } from "../js-globalData/gameState.js";
 
 function kittyCanRelease(releasedKitty) {
   var kittyCanReleaseBool = true

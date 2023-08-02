@@ -1,4 +1,4 @@
-import {ball, crack} from "../gameObjects.js"
+import {ball, crack} from "../js-globalData/gameObjects.js"
 
 function isCollision() {
       const ballRect = ball.getBoundingClientRect();

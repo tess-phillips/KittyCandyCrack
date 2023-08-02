@@ -1,5 +1,5 @@
 // ballSpeed.js
-import { gameState } from "../gameState.js";
+import { gameState } from "../js-globalData/gameState.js";
 
 function ballSpeed(){
     gameState.eventEnd = Date.now(); // Record the event end time
