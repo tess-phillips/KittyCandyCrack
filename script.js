@@ -1,6 +1,6 @@
 // script.js
 import { setupEventListeners } from "./js-functions/setupEventListeners.js";
-import { animateBallDrop } from "./js-functions/animateBallDRop.js";
+import { animateBallDrop } from "./js-functions/move-ball-functions/animateBallDrop.js";
 
 document.getElementById("startButton").addEventListener("click", function() {
   // Show the game-container and animate the ball

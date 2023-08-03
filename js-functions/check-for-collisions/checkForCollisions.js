@@ -1,4 +1,4 @@
-import { animateBallDrop } from "../animateBallDRop.js";
+import { animateBallDrop } from "../move-ball-functions/animateBallDrop.js";
 import { isMostlyOverlapping } from "./isMostlyOverlapping.js";
 import { isTouching } from "./isTouching.js";
 import { ball, crack } from "../../js-globalData/gameObjects.js";

@@ -1,5 +1,5 @@
 import { kittyCanRelease } from "./kittyCanRelease.js"
-import { moveBall } from "./moveBall.js";
+import { moveBall } from "../move-ball-functions/moveBall.js";
 import { ballSpeed } from "./ballSpeed.js";
 import { gameState } from "../../js-globalData/gameState.js";
 
