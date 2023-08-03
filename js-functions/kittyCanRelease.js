@@ -2,8 +2,6 @@
 import { gameState } from "../js-globalData/gameState.js";
 
 function kittyCanRelease(releasedKitty) {
-  gameState.collisionCounter = 0;
-
   var kittyCanReleaseBool = true
   const kitty_released = releasedKitty.id;
 

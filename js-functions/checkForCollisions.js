@@ -9,14 +9,14 @@ function checkForCollisions() {
     console.log("Complete overlap detected!")
     clearInterval(gameState.interval);
     gameState.interval = null;
+    gameState.ballPositionX = kitty1.offsetLeft + kitty1.offsetWidth / 2 - ball.offsetWidth / 2,
+
     ball.style.display = "none"
-    ball.style.left = "9px"
-// KITTY RELEASE NOT WORKING AFTER BALL FALLS IN CRACK
+    ball.style.left = "9px"  // Change here if you'd like it to go to kitty on right
     setTimeout(() => {
       ball.style.display = "block";
-      animateBallDrop(); // Call animateBallDrop to make the ball drop again
-      console.log("ball dropped - kittyCanRelease not releasing?")
-    }, 1000);
+      animateBallDrop();
+    }, 1500);
   } 
   else if (isTouching()) {
     console.log("Collision detected!")
