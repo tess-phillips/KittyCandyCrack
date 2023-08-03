@@ -28,7 +28,8 @@ img {
   width: 600px; /* Set the width of the game-canvas container */
   height: 400px; /* Set the height of the game-canvas container */
   overflow: hidden; /* Ensure anything outside the container is hidden */
-  background-color: black; /* Black border */
+  background-color: darkgray; /* Black border */
+  border-radius: 2px;
 }
 
 .kitty {
@@ -36,6 +37,7 @@ img {
   height: 50px;
   position: absolute;
   top: 50%;
+  border-radius: 5px;
 }
 
 #kitty1 {
@@ -52,7 +54,7 @@ img {
   width: 30px;
   height: 30px;
   position: absolute;
-  top: 52%;
+  /* top: 52%; */
   left: 9px; 
   /* Start the ball on top of "kitty1" */
   background-color: yellow;
@@ -63,10 +65,11 @@ img {
 
 .crack {
   width: 30px;
-  height: 30px;
+  height: 100px;
   position: absolute;
-  top: 52%;
+  writing-mode: vertical-lr;
+  top: 70%;
   left: 200px; 
   background-color: white;
-  border-radius: 50%;
+  border-radius: 5px;
 }

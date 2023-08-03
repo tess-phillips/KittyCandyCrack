@@ -1,8 +1,8 @@
 // setUpEventListeners.js
 import { handleMouseDownOrTouchStart } from "./handleMouseDownOrTouchStart.js";
-import { handleKittyRelease } from "./handleKittyRelease.js";
-import { kitty1, kitty2 } from "../gameObjects.js"
-import { checkForCollisions } from "./checkForCollisions.js";
+import { handleKittyRelease } from "./handle-kitty-release/handleKittyRelease.js";
+import { kitty1, kitty2 } from "../js-globalData/gameObjects.js"
+import { checkForCollisions } from "./check-for-collisions/checkForCollisions.js";
 
 function setupEventListeners() {
 
@@ -23,7 +23,7 @@ function setupEventListeners() {
   document.addEventListener("mouseup", handleKittyRelease);  
 
 
-  // const collisionResult = isCollision(ball, crack);
+  // const collisionResult = isTouching(ball, crack);
   // console.log('Collision Result:', collisionResult);
 
 
