@@ -6,7 +6,7 @@ import { gameState } from "../../js-globalData/gameState.js";
 
 
 function checkForCollisions() {
-  if (isMostlyOverlapping()){
+  if (isMostlyOverlapping(ball,crack)){
     console.log("Complete overlap detected!")
     clearInterval(gameState.interval);
     gameState.interval = null;

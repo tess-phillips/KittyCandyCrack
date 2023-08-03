@@ -1,9 +1,7 @@
-function isMostlyOverlapping() {
-  const ball = document.getElementById("ball");
-  const crack = document.getElementById("crack");
+function isMostlyOverlapping(eltOnTop, eltOnBottom) {
 
-  const ballRect = ball.getBoundingClientRect();
-  const crackRect = crack.getBoundingClientRect();
+  const ballRect = eltOnTop.getBoundingClientRect();
+  const crackRect = eltOnBottom.getBoundingClientRect();
 
   // Calculate the intersection rectangle
   const intersection = {

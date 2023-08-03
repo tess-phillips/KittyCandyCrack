@@ -8,10 +8,11 @@ function handleKittyRelease(event) {
     if (kittyCanRelease(event.target)) {
       // gameState.speed_ = ballSpeed(); I can't work out the best way to do speed
 
-      // this is randomly chosen to simulate more different paths
-      const amplitude = Math.floor(Math.random() * 3);; // Amplitude of the sine wave
+      // const path = "line"
+      const path = "sine"
+
       // Move the ball towards the other kitty
-      gameState.interval = setInterval(() => moveBall(event.target, amplitude), 15);
+      gameState.interval = setInterval(() => moveBall(event.target, path), 15);
     }
 }
 
