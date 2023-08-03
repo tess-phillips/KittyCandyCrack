@@ -18,7 +18,7 @@ function handleKittyRelease(event) {
       //   return paths[randomIndex];
       // }
 
-      const path = "line"
+      const path = "goToCrack"
 
       // Move the ball towards the other kitty
       moveBall(event.target, path)

@@ -12,47 +12,21 @@ function moveBall(releasedKitty, path) {
 
   const speed = 5; // Number of pixels the ball moves on each update
 
-  // const startX = gameState.ballPositionX;
-  const startX = ball.offsetLeft;
-  const startY = ball.offsetTop;
-
-
   const endX = targetKitty.offsetLeft + targetKitty.offsetWidth / 2 - ball.offsetWidth / 2;
   const endY = targetKitty.offsetTop + targetKitty.offsetHeight / 2 - ball.offsetHeight / 2;
 
-  // if (gameState.ballPositionX == endX) {
-  if (isMostlyOverlapping(ball, targetKitty)){
-    clearInterval(gameState.interval);
-    gameState.interval = null;
-    gameState.passCounter++;
-    ball.style.left = endX + "px"
-    ball.style.top = endY + "px"
-    // gameState.ballPositionX == endX
-  } else if (isTouching(ball, targetKitty)){
-    clearInterval(gameState.interval);
-    gameState.interval = null;
-    gameState.passCounter++;
-    ball.style.left = endX + "px"
-    ball.style.top = endY + "px"
-    // gameState.ballPositionX == endX
-  } else {
-    if (path == "line"){
-      console.log(gameState.ballPositionX, parseInt(ball.style.left))
-      gameState.ballPositionX += direction * speed
+  function animationLoop(){
+    if (path === "line") {
+      gameState.ballPositionX += direction * speed;
       ball.style.left = gameState.ballPositionX + "px";
-      console.log(gameState.ballPositionX, parseInt(ball.style.left))
-
-      // const currentLeft = parseInt(ball.style.left);
-      // ball.style.left = (currentLeft + direction * speed) + "px";
-      console.log("done/")
     } else if (path.includes("sine")){
-      if (path == "sine1"){
+        if (path == "sine1"){
         const amplitude = 50; // The distance the ball moves up and down
         const frequency = 0.01; // Adjust this value to control the frequency of the sine movement
 
         gameState.ballPositionX += gameState.ballPositionX < endX ? speed : -speed;
         ball.style.left = gameState.ballPositionX + "px";
-  
+
         // Additional code for moving the ball up and down in a repeating pattern
   
         const offsetY = amplitude * Math.sin(frequency * gameState.ballPositionX);
@@ -60,8 +34,8 @@ function moveBall(releasedKitty, path) {
         // The ball's new vertical position is calculated by adding the sine movement to the endY
         const newY = endY + offsetY;
         ball.style.top = newY + "px";  
-      }
-      else if (path== "sine2"){
+        }
+        else if (path== "sine2"){
         const amplitude = 10; // The distance the ball moves up and down
         const frequency = 0.01; // Adjust this value to control the frequency of the sine movement
 
@@ -75,16 +49,34 @@ function moveBall(releasedKitty, path) {
         // The ball's new vertical position is calculated by adding the sine movement to the endY
         const newY = endY + offsetY;
         ball.style.top = newY + "px";  
+        }
+      } else if (path == "goToCrack"){
+        gameState.ballPositionX += direction * speed * 2
+        ball.style.left = gameState.ballPositionX + "px";
+        gameState.ballPositionY += direction * speed
+        ball.style.top = gameState.ballPositionY + "px";
       }
-  
-    } else if (path == "goToCrack"){
-      gameState.ballPositionX += direction * speed
-      ball.style.left = gameState.ballPositionX + "px";
-      gameState.ballPositionY += direction * speed
-      ball.style.top = gameState.ballPositionY + "px";
-    }
-  }
-  // requestAnimationFrame(moveBall(releasedKitty,path))
-}
 
+      if (isMostlyOverlapping(ball, targetKitty)){
+        // clearInterval(gameState.interval);
+        // gameState.interval = null;
+        gameState.passCounter++;
+        ball.style.left = endX + "px"
+        ball.style.top = endY + "px"
+        // gameState.ballPositionX == endX
+      } else if (isTouching(ball, targetKitty)){
+        // clearInterval(gameState.interval);
+        // gameState.interval = null;
+        gameState.passCounter++;
+        ball.style.left = endX + "px"
+        ball.style.top = endY + "px"
+        // gameState.ballPositionX == endX
+      } else {
+          requestAnimationFrame(animationLoop);
+        }
+
+    }
+  requestAnimationFrame(animationLoop);
+}
+  
 export { moveBall };
