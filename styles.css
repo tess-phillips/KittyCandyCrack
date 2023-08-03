@@ -17,10 +17,10 @@ h1 {
 
 img {
   margin: 0;
- }
+}
 
 .viewport-center {
-  margin:10px;
+  margin: 10px;
 }
 
 #game-container {
@@ -55,7 +55,7 @@ img {
   height: 30px;
   position: absolute;
   /* top: 52%; */
-  left: 9px; 
+  left: 9px;
   /* Start the ball on top of "kitty1" */
   background-color: yellow;
   border-radius: 50%;
@@ -69,7 +69,7 @@ img {
   position: absolute;
   writing-mode: vertical-lr;
   top: 70%;
-  left: 200px; 
+  left: 200px;
   background-color: white;
   border-radius: 5px;
 }

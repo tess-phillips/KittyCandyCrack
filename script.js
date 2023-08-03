@@ -2,12 +2,12 @@
 import { setupEventListeners } from "./js-functions/setupEventListeners.js";
 import { animateBallDrop } from "./js-functions/move-ball-functions/animateBallDrop.js";
 
-document.getElementById("startButton").addEventListener("click", function() {
+document.getElementById("startButton").addEventListener("click", function () {
   // Show the game-container and animate the ball
   const gameContainer = document.getElementById("game-container");
   const startButton = document.getElementById("startButton");
   gameContainer.style.display = "block";
-  startButton.style.display = "none";  
+  startButton.style.display = "none";
   animateBallDrop();
 });
 
