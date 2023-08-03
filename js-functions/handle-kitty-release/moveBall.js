@@ -3,6 +3,7 @@ import { gameState } from "../../js-globalData/gameState.js";
 import { ball } from "../../js-globalData/gameObjects.js";
 import { isMostlyOverlapping } from "../check-for-collisions/isMostlyOverlapping.js";
 import { isTouching } from "../check-for-collisions/isTouching.js";
+import { animateBallDrop } from "../animateBallDRop.js";
 
 function moveBall(releasedKitty, path) {
   // This function moves the ball incrementally
@@ -15,11 +16,38 @@ function moveBall(releasedKitty, path) {
   const endX = targetKitty.offsetLeft + targetKitty.offsetWidth / 2 - ball.offsetWidth / 2;
   const endY = targetKitty.offsetTop + targetKitty.offsetHeight / 2 - ball.offsetHeight / 2;
 
-  function animationLoop(){
+  let collisionDetected = false
+
+  // Function to check for collisions
+  function checkForCollisions() {
+    if (isMostlyOverlapping(ball, crack)) {
+      console.log("Complete overlap detected!", ball);
+      ball.style.display = "none";
+       // Change here if you'd like it to go to the kitty on the right
+
+      // Check if collision is not already detected before proceeding
+      if (!collisionDetected) {
+        collisionDetected = true; // Set the flag to true to indicate collision is detected
+        setTimeout(() => {
+          ball.style.left = "9px";
+          gameState.ballPositionX = kitty1.offsetLeft + kitty1.offsetWidth / 2 - ball.offsetWidth / 2
+          ball.style.display = "block";
+          animateBallDrop();
+        }, 1500);
+      }
+    } else if (isTouching(ball, crack)) {
+      console.log("Collision detected!");
+      cancelAnimationFrame(gameState.animationFrame); // Stop the animation loop
+    }
+  }
+
+  function animationLoop() {
+    checkForCollisions(); // Check for collisions before moving the ball
+
     if (path === "line") {
       gameState.ballPositionX += direction * speed;
       ball.style.left = gameState.ballPositionX + "px";
-    } else if (path.includes("sine")){
+    } else if (path.includes("sine")) {
         if (path == "sine1"){
         const amplitude = 50; // The distance the ball moves up and down
         const frequency = 0.01; // Adjust this value to control the frequency of the sine movement
@@ -35,9 +63,9 @@ function moveBall(releasedKitty, path) {
         const newY = endY + offsetY;
         ball.style.top = newY + "px";  
         }
-        else if (path== "sine2"){
-        const amplitude = 10; // The distance the ball moves up and down
-        const frequency = 0.01; // Adjust this value to control the frequency of the sine movement
+        else if (path== "sineCrack"){
+        const amplitude = 60; // The distance the ball moves up and down
+        const frequency = 0.07; // Adjust this value to control the frequency of the sine movement
 
         gameState.ballPositionX += gameState.ballPositionX < endX ? speed : -speed;
         ball.style.left = gameState.ballPositionX + "px";
@@ -50,33 +78,24 @@ function moveBall(releasedKitty, path) {
         const newY = endY + offsetY;
         ball.style.top = newY + "px";  
         }
-      } else if (path == "goToCrack"){
-        gameState.ballPositionX += direction * speed * 2
-        ball.style.left = gameState.ballPositionX + "px";
-        gameState.ballPositionY += direction * speed
-        ball.style.top = gameState.ballPositionY + "px";
       }
 
-      if (isMostlyOverlapping(ball, targetKitty)){
-        // clearInterval(gameState.interval);
-        // gameState.interval = null;
+      if (isMostlyOverlapping(ball, targetKitty) || isTouching(ball, targetKitty)) {
+        clearInterval(gameState.interval);
+        gameState.interval = null;
         gameState.passCounter++;
-        ball.style.left = endX + "px"
-        ball.style.top = endY + "px"
-        // gameState.ballPositionX == endX
-      } else if (isTouching(ball, targetKitty)){
-        // clearInterval(gameState.interval);
-        // gameState.interval = null;
-        gameState.passCounter++;
-        ball.style.left = endX + "px"
-        ball.style.top = endY + "px"
-        // gameState.ballPositionX == endX
-      } else {
-          requestAnimationFrame(animationLoop);
+        ball.style.left = endX + "px";
+        ball.style.top = endY + "px";
+      } 
+      else {
+        if (!collisionDetected) {
+          // Continue the animation loop only if no collision is detected
+          gameState.animationFrame = requestAnimationFrame(animationLoop);
         }
-
+      }
     }
-  requestAnimationFrame(animationLoop);
-}
   
-export { moveBall };
+    gameState.animationFrame = requestAnimationFrame(animationLoop); // Store the animation frame ID in gameState
+  }
+  
+  export { moveBall };
