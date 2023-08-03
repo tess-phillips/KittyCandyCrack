@@ -1,12 +1,10 @@
 // setUpEventListeners.js
 import { handleMouseDownOrTouchStart } from "./handleMouseDownOrTouchStart.js";
 import { handleKittyRelease } from "./handle-kitty-release/handleKittyRelease.js";
-import { kitty1, kitty2 } from "../js-globalData/gameObjects.js"
+import { kitty1, kitty2 } from "../js-globalData/gameObjects.js";
 import { checkForCollisions } from "./check-for-collisions/checkForCollisions.js";
 
 function setupEventListeners() {
-
-  
   kitty1.addEventListener("mousedown", handleMouseDownOrTouchStart);
   kitty2.addEventListener("mousedown", handleMouseDownOrTouchStart);
   kitty1.addEventListener("touchstart", handleMouseDownOrTouchStart);
@@ -18,18 +16,15 @@ function setupEventListeners() {
       // event.preventDefault();
     }
   });
-  
-  document.addEventListener("touchend", handleKittyRelease);
-  document.addEventListener("mouseup", handleKittyRelease);  
 
+  document.addEventListener("touchend", handleKittyRelease);
+  document.addEventListener("mouseup", handleKittyRelease);
 
   // const collisionResult = isTouching(ball, crack);
   // console.log('Collision Result:', collisionResult);
 
-
-  
   // Start the continuous update loop for collision detection
   requestAnimationFrame(checkForCollisions);
 }
-  
-export { setupEventListeners };  
+
+export { setupEventListeners };

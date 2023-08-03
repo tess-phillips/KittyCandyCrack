@@ -17,10 +17,10 @@ h1 {
 
 img {
   margin: 0;
- }
+}
 
 .viewport-center {
-  margin:10px;
+  margin: 10px;
 }
 
 #game-container {
@@ -55,7 +55,7 @@ img {
   height: 30px;
   position: absolute;
   /* top: 52%; */
-  left: 9px; 
+  left: 9px;
   /* Start the ball on top of "kitty1" */
   background-color: yellow;
   border-radius: 50%;
@@ -69,21 +69,7 @@ img {
   position: absolute;
   writing-mode: vertical-lr;
   top: 70%;
-  left: 200px; 
+  left: 200px;
   background-color: white;
   border-radius: 5px;
-}
-
-@media screen and (max-width: 768px) {
-  /* Apply the landscape rotation when the viewport width is less than or equal to 768px (considered as mobile) */
-  body {
-      transform: rotate(90deg);
-      transform-origin: left top; /* Set the origin of the rotation */
-      width: 100vh; /* Swap width and height values for proper rendering */
-      height: 100vw;
-      overflow-x: hidden; /* Hide horizontal scrollbars caused by rotation */
-      position: absolute;
-      top: 100%; /* Adjust position to bring the content back to the viewport */
-      left: 0;
-  }
 }
