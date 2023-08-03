@@ -15,7 +15,7 @@ function setupEventListeners() {
   // Prevent default behavior on touch events to avoid potential conflicts
   document.body.addEventListener("touchstart", (event) => {
     if (event.target === kitty1 || event.target === kitty2) {
-      event.preventDefault();
+      // event.preventDefault();
     }
   });
   
