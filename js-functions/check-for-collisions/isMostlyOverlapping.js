@@ -1,19 +1,3 @@
-import {ball, crack} from "../../js-globalData/gameObjects.js"
-
-function isTouching() {
-      const ballRect = ball.getBoundingClientRect();
-      const crackRect = crack.getBoundingClientRect();
-    
-      // Check for collision
-      const collision =
-        ballRect.left < crackRect.right &&
-        ballRect.right > crackRect.left &&
-        ballRect.top < crackRect.bottom &&
-        ballRect.bottom > crackRect.top;
-
-      return collision;
-}
-
 function isMostlyOverlapping() {
   const ball = document.getElementById("ball");
   const crack = document.getElementById("crack");
@@ -39,4 +23,4 @@ function isMostlyOverlapping() {
 }
 
 
-export { isTouching , isMostlyOverlapping}
+export { isMostlyOverlapping}

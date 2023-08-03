@@ -65,10 +65,11 @@ img {
 
 .crack {
   width: 30px;
-  height: 30px;
+  height: 100px;
   position: absolute;
-  top: 52%;
+  writing-mode: vertical-lr;
+  top: 70%;
   left: 200px; 
   background-color: white;
-  border-radius: 50%;
+  border-radius: 5px;
 }

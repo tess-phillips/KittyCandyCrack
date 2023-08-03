@@ -3,6 +3,9 @@ import { gameState } from "../../js-globalData/gameState.js";
 import { ball } from "../../js-globalData/gameObjects.js";
 
 function moveBall(releasedKitty, amplitude) {
+  // This function moves the ball incrementally
+  // I've added some physics to make the end point be set to the next kitty
+  // consequence of this is some slightly weird movement, and speed harder to control
   const kitty_released = releasedKitty.id
   const targetKitty = kitty_released === "kitty1" ? kitty2 : kitty1;
 

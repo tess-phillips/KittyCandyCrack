@@ -1,6 +1,7 @@
 import { animateBallDrop } from "../animateBallDRop.js";
-import { isTouching, isMostlyOverlapping } from "./isCollision.js";
-import { ball } from "../../js-globalData/gameObjects.js";
+import { isMostlyOverlapping } from "./isMostlyOverlapping.js";
+import { isTouching } from "./isTouching.js";
+import { ball, crack } from "../../js-globalData/gameObjects.js";
 import { gameState } from "../../js-globalData/gameState.js";
 
 
@@ -18,7 +19,7 @@ function checkForCollisions() {
       animateBallDrop();
     }, 1500);
   } 
-  else if (isTouching()) {
+  else if (isTouching(ball,crack)) {
     console.log("Collision detected!")
   } 
   else {

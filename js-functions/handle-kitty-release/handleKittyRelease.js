@@ -11,7 +11,7 @@ function handleKittyRelease(event) {
       // this is randomly chosen to simulate more different paths
       const amplitude = Math.floor(Math.random() * 3);; // Amplitude of the sine wave
       // Move the ball towards the other kitty
-      gameState.interval = setInterval(() => moveBall(event.target, amplitude), 10);
+      gameState.interval = setInterval(() => moveBall(event.target, amplitude), 15);
     }
 }
 
