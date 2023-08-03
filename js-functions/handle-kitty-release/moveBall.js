@@ -1,6 +1,6 @@
 // moveBall.js
-import { gameState } from "../js-globalData/gameState.js";
-import { ball } from "../js-globalData/gameObjects.js";
+import { gameState } from "../../js-globalData/gameState.js";
+import { ball } from "../../js-globalData/gameObjects.js";
 
 function moveBall(releasedKitty, amplitude) {
   const kitty_released = releasedKitty.id

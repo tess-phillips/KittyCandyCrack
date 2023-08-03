@@ -1,8 +1,8 @@
 // setUpEventListeners.js
 import { handleMouseDownOrTouchStart } from "./handleMouseDownOrTouchStart.js";
-import { handleKittyRelease } from "./handleKittyRelease.js";
+import { handleKittyRelease } from "./handle-kitty-release/handleKittyRelease.js";
 import { kitty1, kitty2 } from "../js-globalData/gameObjects.js"
-import { checkForCollisions } from "./checkForCollisions.js";
+import { checkForCollisions } from "./check-for-collisions/checkForCollisions.js";
 
 function setupEventListeners() {
 

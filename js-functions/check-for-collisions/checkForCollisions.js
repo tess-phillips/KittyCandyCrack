@@ -1,7 +1,7 @@
-import { animateBallDrop } from "./animateBallDRop.js";
+import { animateBallDrop } from "../animateBallDRop.js";
 import { isTouching, isMostlyOverlapping } from "./isCollision.js";
-import { ball } from "../js-globalData/gameObjects.js";
-import { gameState } from "../js-globalData/gameState.js";
+import { ball } from "../../js-globalData/gameObjects.js";
+import { gameState } from "../../js-globalData/gameState.js";
 
 
 function checkForCollisions() {
