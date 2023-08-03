@@ -12,3 +12,6 @@ const gameState = {
 };
 
 export { gameState }
+
+
+// kitty1ball coords: (kitty1.offsetLeft + kitty1.offsetWidth / 2 - ball.offsetWidth / 2, 209)

@@ -8,11 +8,14 @@ function moveBall(releasedKitty, path) {
   // This function moves the ball incrementally
   const kitty_released = releasedKitty.id
   const targetKitty = kitty_released === "kitty1" ? kitty2 : kitty1;
+  const direction = kitty_released === "kitty1" ? 1 : -1;
 
   const speed = 5; // Number of pixels the ball moves on each update
 
-  const startX = gameState.ballPositionX;
+  // const startX = gameState.ballPositionX;
+  const startX = ball.offsetLeft;
   const startY = ball.offsetTop;
+
 
   const endX = targetKitty.offsetLeft + targetKitty.offsetWidth / 2 - ball.offsetWidth / 2;
   const endY = targetKitty.offsetTop + targetKitty.offsetHeight / 2 - ball.offsetHeight / 2;
@@ -24,18 +27,23 @@ function moveBall(releasedKitty, path) {
     gameState.passCounter++;
     ball.style.left = endX + "px"
     ball.style.top = endY + "px"
-    gameState.ballPositionX == endX
+    // gameState.ballPositionX == endX
   } else if (isTouching(ball, targetKitty)){
     clearInterval(gameState.interval);
     gameState.interval = null;
     gameState.passCounter++;
     ball.style.left = endX + "px"
     ball.style.top = endY + "px"
-    gameState.ballPositionX == endX
+    // gameState.ballPositionX == endX
   } else {
     if (path == "line"){
-      gameState.ballPositionX += gameState.ballPositionX < endX ? speed : -speed;
+      console.log(gameState.ballPositionX, parseInt(ball.style.left))
+      gameState.ballPositionX += direction * speed
       ball.style.left = gameState.ballPositionX + "px";
+      console.log(gameState.ballPositionX, parseInt(ball.style.left))
+
+      // const currentLeft = parseInt(ball.style.left);
+      // ball.style.left = (currentLeft + direction * speed) + "px";
       console.log("done/")
     } else if (path.includes("sine")){
       if (path == "sine1"){
@@ -70,12 +78,13 @@ function moveBall(releasedKitty, path) {
       }
   
     } else if (path == "goToCrack"){
-      gameState.ballPositionX += gameState.ballPositionX < endX ? speed : -speed;
+      gameState.ballPositionX += direction * speed
       ball.style.left = gameState.ballPositionX + "px";
-      gameState.ballPositionY += 1
+      gameState.ballPositionY += direction * speed
       ball.style.top = gameState.ballPositionY + "px";
     }
   }
+  // requestAnimationFrame(moveBall(releasedKitty,path))
 }
 
 export { moveBall };

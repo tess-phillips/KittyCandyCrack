@@ -1,5 +1,4 @@
 // kittyCanRelease.js
-import { gameState } from "../../js-globalData/gameState.js";
 import { isMostlyOverlapping } from "../check-for-collisions/isMostlyOverlapping.js";
 
 function kittyCanRelease(releasedKitty) {
@@ -11,10 +10,7 @@ function kittyCanRelease(releasedKitty) {
     return kittyCanReleaseBool
   }
 
-  gameState.has_ball = isMostlyOverlapping(ball, releasedKitty)
-  // gameState.has_ball = (gameState.ballPositionX >= releasedKitty.offsetLeft && gameState.ballPositionX <= releasedKitty.offsetLeft + releasedKitty.offsetWidth);
-
-  if (!gameState.has_ball) {
+  if (!isMostlyOverlapping(ball, releasedKitty)) {
     kittyCanReleaseBool = false;
     return kittyCanReleaseBool; // Do nothing if the released kitty doesn't have the ball
   }
