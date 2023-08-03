@@ -6,31 +6,25 @@ import { gameState } from "../../js-globalData/gameState.js";
 
 
 function checkForCollisions() {
-  if (isMostlyOverlapping(ball,crack)){
-    // console.log("Complete overlap detected!")
-    // clearInterval(gameState.interval);
-    // gameState.interval = null;
-    // gameState.ballPositionX = kitty1.offsetLeft + kitty1.offsetWidth / 2 - ball.offsetWidth / 2
-    // gameState.ballPositionY = 209
+  if (isMostlyOverlapping(ball, crack)) {
+    console.log("Complete overlap detected!", ball);
+    ball.style.display = "none";
+     // Change here if you'd like it to go to the kitty on the right
 
-    // ball.style.display = "none"
-    // ball.style.left = "9px"  // Change here if you'd like it to go to kitty on right
-    // // setTimeout(() => {
-    // //   ball.style.display = "block";
-    // //   animateBallDrop();
-    // // }, 1500);
-  } 
-  else if (isTouching(ball,crack)) {
-    // console.log("Collision detected!")
-  } 
-  else {
-    // No collision
-    // console.log("No collision.");
+    // Check if collision is not already detected before proceeding
+    if (!gameState.collisionDetected) {
+      gameState.collisionDetected = true; // Set the flag to true to indicate collision is detected
+      setTimeout(() => {
+        ball.style.left = "9px";
+        gameState.ballPositionX = kitty1.offsetLeft + kitty1.offsetWidth / 2 - ball.offsetWidth / 2
+        ball.style.display = "block";
+        animateBallDrop();
+      }, 1500);
+    }
+  } else if (isTouching(ball, crack)) {
+    console.log("Collision detected!");
+    cancelAnimationFrame(gameState.animationFrame); // Stop the animation loop
   }
-
-
-  // Continue the loop for continuous collision detection
-  requestAnimationFrame(checkForCollisions);
 }
 
 export { checkForCollisions }

@@ -8,7 +8,8 @@ const gameState = {
     eventEnd: null,
     timePressed: null,
     speed_: null,
-    step: null
+    step: null,
+    collisionDetected: false
 };
 
 export { gameState }

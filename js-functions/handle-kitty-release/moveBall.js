@@ -3,7 +3,7 @@ import { gameState } from "../../js-globalData/gameState.js";
 import { ball } from "../../js-globalData/gameObjects.js";
 import { isMostlyOverlapping } from "../check-for-collisions/isMostlyOverlapping.js";
 import { isTouching } from "../check-for-collisions/isTouching.js";
-import { animateBallDrop } from "../animateBallDRop.js";
+import { checkForCollisions } from "../check-for-collisions/checkForCollisions.js";
 
 function moveBall(releasedKitty, path) {
   // This function moves the ball incrementally
@@ -16,30 +16,7 @@ function moveBall(releasedKitty, path) {
   const endX = targetKitty.offsetLeft + targetKitty.offsetWidth / 2 - ball.offsetWidth / 2;
   const endY = targetKitty.offsetTop + targetKitty.offsetHeight / 2 - ball.offsetHeight / 2;
 
-  let collisionDetected = false
-
-  // Function to check for collisions
-  function checkForCollisions() {
-    if (isMostlyOverlapping(ball, crack)) {
-      console.log("Complete overlap detected!", ball);
-      ball.style.display = "none";
-       // Change here if you'd like it to go to the kitty on the right
-
-      // Check if collision is not already detected before proceeding
-      if (!collisionDetected) {
-        collisionDetected = true; // Set the flag to true to indicate collision is detected
-        setTimeout(() => {
-          ball.style.left = "9px";
-          gameState.ballPositionX = kitty1.offsetLeft + kitty1.offsetWidth / 2 - ball.offsetWidth / 2
-          ball.style.display = "block";
-          animateBallDrop();
-        }, 1500);
-      }
-    } else if (isTouching(ball, crack)) {
-      console.log("Collision detected!");
-      cancelAnimationFrame(gameState.animationFrame); // Stop the animation loop
-    }
-  }
+  gameState.collisionDetected = false
 
   function animationLoop() {
     checkForCollisions(); // Check for collisions before moving the ball
@@ -88,14 +65,14 @@ function moveBall(releasedKitty, path) {
         ball.style.top = endY + "px";
       } 
       else {
-        if (!collisionDetected) {
+        if (!gameState.collisionDetected) {
           // Continue the animation loop only if no collision is detected
           gameState.animationFrame = requestAnimationFrame(animationLoop);
         }
       }
-    }
+  }
   
-    gameState.animationFrame = requestAnimationFrame(animationLoop); // Store the animation frame ID in gameState
+  gameState.animationFrame = requestAnimationFrame(animationLoop); // Store the animation frame ID in gameState
   }
   
   export { moveBall };
