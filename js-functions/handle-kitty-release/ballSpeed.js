@@ -14,7 +14,7 @@ function ballSpeed(){
     }
 
     console.log(gameState.speed_, "speed (bigger is slower)")
-    return gameState.speed_
+    return gameState.speed_*2
 }
 
 export { ballSpeed }

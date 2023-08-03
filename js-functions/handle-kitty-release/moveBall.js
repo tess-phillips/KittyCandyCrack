@@ -37,18 +37,43 @@ function moveBall(releasedKitty, path) {
       gameState.ballPositionX += gameState.ballPositionX < endX ? speed : -speed;
       ball.style.left = gameState.ballPositionX + "px";
       console.log("done/")
-    } else if (path == "sine"){
+    } else if (path.includes("sine")){
+      if (path == "sine1"){
+        const amplitude = 50; // The distance the ball moves up and down
+        const frequency = 0.01; // Adjust this value to control the frequency of the sine movement
+
+        gameState.ballPositionX += gameState.ballPositionX < endX ? speed : -speed;
+        ball.style.left = gameState.ballPositionX + "px";
+  
+        // Additional code for moving the ball up and down in a repeating pattern
+  
+        const offsetY = amplitude * Math.sin(frequency * gameState.ballPositionX);
+  
+        // The ball's new vertical position is calculated by adding the sine movement to the endY
+        const newY = endY + offsetY;
+        ball.style.top = newY + "px";  
+      }
+      else if (path== "sine2"){
+        const amplitude = 10; // The distance the ball moves up and down
+        const frequency = 0.01; // Adjust this value to control the frequency of the sine movement
+
+        gameState.ballPositionX += gameState.ballPositionX < endX ? speed : -speed;
+        ball.style.left = gameState.ballPositionX + "px";
+  
+        // Additional code for moving the ball up and down in a repeating pattern
+  
+        const offsetY = amplitude * Math.sin(frequency * gameState.ballPositionX);
+  
+        // The ball's new vertical position is calculated by adding the sine movement to the endY
+        const newY = endY + offsetY;
+        ball.style.top = newY + "px";  
+      }
+  
+    } else if (path == "goToCrack"){
       gameState.ballPositionX += gameState.ballPositionX < endX ? speed : -speed;
       ball.style.left = gameState.ballPositionX + "px";
-
-      // Additional code for moving the ball up and down in a repeating pattern
-      const amplitude = 50; // The distance the ball moves up and down
-      const frequency = 0.01; // Adjust this value to control the frequency of the sine movement
-      const offsetY = amplitude * Math.sin(frequency * gameState.ballPositionX);
-
-      // The ball's new vertical position is calculated by adding the sine movement to the endY
-      const newY = endY + offsetY;
-      ball.style.top = newY + "px";    
+      gameState.ballPositionY += 1
+      ball.style.top = gameState.ballPositionY + "px";
     }
   }
 }
