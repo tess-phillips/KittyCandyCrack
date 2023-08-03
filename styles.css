@@ -73,17 +73,3 @@ img {
   background-color: white;
   border-radius: 5px;
 }
-
-@media screen and (max-width: 768px) {
-  /* Apply the landscape rotation when the viewport width is less than or equal to 768px (considered as mobile) */
-  body {
-      transform: rotate(90deg);
-      transform-origin: left top; /* Set the origin of the rotation */
-      width: 100vh; /* Swap width and height values for proper rendering */
-      height: 100vw;
-      overflow-x: hidden; /* Hide horizontal scrollbars caused by rotation */
-      position: absolute;
-      top: 100%; /* Adjust position to bring the content back to the viewport */
-      left: 0;
-  }
-}
